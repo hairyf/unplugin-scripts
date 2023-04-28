@@ -1,17 +1,17 @@
 {
-  "name": "unplugin-starter",
+  "name": "unplugin-scripts",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "packageManager": "pnpm@7.1.1",
   "description": "Register global imports on demand for Vite and Webpack",
   "license": "MIT",
-  "homepage": "https://github.com/antfu/unplugin-starter#readme",
+  "homepage": "https://github.com/antfu/unplugin-scripts#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antfu/unplugin-starter.git"
+    "url": "git+https://github.com/antfu/unplugin-scripts.git"
   },
   "bugs": {
-    "url": "https://github.com/antfu/unplugin-starter/issues"
+    "url": "https://github.com/antfu/unplugin-scripts/issues"
   },
   "keywords": [
     "unplugin",
@@ -84,6 +84,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "execa": "^5.1.1",
     "unplugin": "^1.0.1"
   },
   "devDependencies": {

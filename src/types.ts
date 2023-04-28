@@ -1,3 +1,8 @@
+import type { SyncOptions } from 'execa'
+
 export interface Options {
-  // define your plugin options here
+  script: string | Function
+  interval?: number
+  execa?: SyncOptions
+  invoke?: () => boolean | undefined
 }

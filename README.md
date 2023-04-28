@@ -1,28 +1,12 @@
-# unplugin-starter
+# unplugin-scripts
 
-[![NPM version](https://img.shields.io/npm/v/unplugin-starter?color=a1b858&label=)](https://www.npmjs.com/package/unplugin-starter)
+Better use of scripts for Vite, Webpack, Rollup and esbuild. With TypeScript support. Powered by [unplugin](https://github.com/unjs/unplugin).
 
-Starter template for [unplugin](https://github.com/unjs/unplugin).
-
-## Template Usage
-
-To use this template, clone it down using:
-
-```bash
-npx degit antfu/unplugin-starter my-unplugin
-```
-
-And do a global replace of `unplugin-starter` with your plugin name.
-
-Then you can start developing your unplugin 🔥
-
-To test your plugin, run: `pnpm run dev`
-To release a new version, run: `pnpm run release`
 
 ## Install
 
 ```bash
-npm i unplugin-starter
+npm i unplugin-scripts
 ```
 
 <details>
@@ -30,11 +14,11 @@ npm i unplugin-starter
 
 ```ts
 // vite.config.ts
-import Starter from 'unplugin-starter/vite'
+import Scripts from 'unplugin-scripts/vite'
 
 export default defineConfig({
   plugins: [
-    Starter({ /* options */ }),
+    Scripts([/* options */]),
   ],
 })
 ```
@@ -48,11 +32,11 @@ Example: [`playground/`](./playground/)
 
 ```ts
 // rollup.config.js
-import Starter from 'unplugin-starter/rollup'
+import Scripts from 'unplugin-scripts/rollup'
 
 export default {
   plugins: [
-    Starter({ /* options */ }),
+    Scripts([/* options */]),
   ],
 }
 ```
@@ -68,7 +52,7 @@ export default {
 module.exports = {
   /* ... */
   plugins: [
-    require('unplugin-starter/webpack')({ /* options */ })
+    require('unplugin-scripts/webpack')([/* options */])
   ]
 }
 ```
@@ -82,7 +66,7 @@ module.exports = {
 // nuxt.config.js
 export default {
   buildModules: [
-    ['unplugin-starter/nuxt', { /* options */ }],
+    ['unplugin-scripts/nuxt', [/* options */]],
   ],
 }
 ```
@@ -99,7 +83,7 @@ export default {
 module.exports = {
   configureWebpack: {
     plugins: [
-      require('unplugin-starter/webpack')({ /* options */ }),
+      require('unplugin-scripts/webpack')([/* options */]),
     ],
   },
 }
@@ -113,11 +97,46 @@ module.exports = {
 ```ts
 // esbuild.config.js
 import { build } from 'esbuild'
-import Starter from 'unplugin-starter/esbuild'
+import Scripts from 'unplugin-scripts/esbuild'
 
 build({
-  plugins: [Starter()],
+  plugins: [Scripts()],
 })
 ```
 
 <br></details>
+
+## Basic for Vite
+
+```ts
+// vite.config.ts
+import Scripts from 'unplugin-scripts/vite'
+
+function clear() {
+  // ...
+}
+
+export default defineConfig(() => {
+  return {
+    plugins: [
+      Scripts([
+        // only execute once
+        { script: 'node scripts/update.js' },
+        // continuously executing scripts
+        { script: 'api-generate', interval: 100000 },
+        // only build execute
+        {
+          script: 'vue-tsc',
+          invoke: () => command === 'prod'
+        },
+        // execute function
+        { script: clear },
+      ]),
+    ],
+  }
+})
+```
+
+## License
+
+[MIT](./LICENSE) License © 2023 [Hairyf](https://github.com/hairyf)
