@@ -116,7 +116,7 @@ function clear() {
   // ...
 }
 
-export default defineConfig(() => {
+export default defineConfig(({ command }) => {
   return {
     plugins: [
       Scripts([
