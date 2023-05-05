@@ -84,7 +84,6 @@
     "test": "vitest"
   },
   "dependencies": {
-    "execa": "^5.1.1",
     "unplugin": "^1.0.1"
   },
   "devDependencies": {

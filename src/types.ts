@@ -1,8 +1,8 @@
-import type { SyncOptions } from 'execa'
+import type { ExecSyncOptionsWithBufferEncoding } from 'node:child_process'
 
 export interface Options {
   script: string | Function
   interval?: number
-  execa?: SyncOptions
+  options?: ExecSyncOptionsWithBufferEncoding
   invoke?: () => boolean | undefined
 }
